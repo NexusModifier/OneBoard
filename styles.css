@@ -1,0 +1,364 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+  
+/* Main container */
+.main {
+  font-family: "Quicksand", sans-serif;
+  display: flex;
+  flex: 1;
+}
+
+/* Sidebar styling */
+.sidebar {
+    background-color: hsl(0, 0%, 100%);
+    width: 10%;
+    padding: 10px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-left: 25px;
+    border-radius: 10px;
+  }
+
+  .sidebar hr {
+    width: 200px;
+  }
+
+  .sidebar i {
+    margin-right: 10px;
+  }
+  
+  /* Add spacing for Sticky Notes */
+  .sidebar button.sticky-notes {
+    margin-top: auto; /* Push it to the bottom */
+  }
+  
+/* Button Hover Effect */
+.sidebar button {
+    background-color: #ffffffad;
+    color: rgb(18, 18, 18);
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    text-align: center;
+    border-radius: 10px;
+    height: 50px;
+    margin-top: 25px;
+    font-size: 1rem;
+    position: relative; /* Needed for the text floating effect */
+    overflow: hidden; /* Hide the text overflow */
+}
+
+.sidebar button:hover {
+    transform: translateY(-2px); /* Lift the icon slightly */
+    transition: transform 0.3s ease-in-out;
+}
+  
+  /* Content container styling */
+  .content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+    flex: 1;
+    padding: 25px;
+    box-sizing: border-box;
+    overflow-y: auto;
+    margin: 25px;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgb(209, 213, 219) 0px 0px 0px 1px inset;
+  }
+
+  .content h2 {
+    font-size: 4rem;
+  }
+
+  .content p {
+    font-size: 2rem;
+  }
+
+
+  .groups-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+  }
+  
+
+/* Style the todo-container to center the items */
+.todo-container {
+    display: flex;
+    align-items: center; /* Center the items horizontally */
+    gap: 50px; /* Space between each item */
+  }
+  
+  /* Style for each individual to-do item */
+  .todo-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 500px; /* Thinner width */
+    height: 850px; /* Longer height */
+    background-color: #ffffff;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 60px 40px -7px;
+  }
+
+/* Style the task-container to center the items */
+.task-container {
+    display: flex;
+    justify-content: center; /* Center the items horizontally */
+    gap: 50px; /* Space between each item */
+  }
+  
+  /* Style for each individual task item */
+  .task-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 500px; /* Thinner width */
+    height: 850px; /* Longer height */
+    background-color: #ffffff;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 60px 40px -7px;
+  }
+
+/* Style the timer-container to center the items */
+.timer-container {
+  display: flex;
+  justify-content: center; /* Center the items horizontally */
+  gap: 50px; /* Space between each item */
+  margin-top: 20px; /* Space at the top */
+}
+
+/* Style for each individual timer item */
+.timer-one {
+  display: flex;
+  justify-content: center;
+  width: 600px; /* Thinner width */
+  height: 400px; /* Longer height */
+  background-color: #ffffff59;
+  border-radius: 100px;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px, rgba(0, 0, 0, 0.05) 0px 5px 10px;
+}
+
+.timer-two {
+  display: flex;
+  justify-content: center;
+  width: 600px; /* Thinner width */
+  height: 400px; /* Longer height */
+  background-color: #ffffff59;
+  border-radius: 100px;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px, rgba(0, 0, 0, 0.05) 0px 5px 10px;
+}
+
+
+
+.calendar {
+  width: 350px;
+  background: white;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  overflow: hidden;
+}
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: #6c63ff;
+  color: white;
+}
+.calendar-header button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+.calendar-body {
+  padding: 10px;
+}
+.days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 5px;
+}
+.day {
+  text-align: center;
+  padding: 10px;
+  background-color: #f0f0f5;
+  cursor: pointer;
+  border-radius: 4px;
+}
+.day:hover {
+  background-color: #e0e0eb;
+}
+.day.event {
+  background-color: #6c63ff;
+  color: white;
+}
+
+
+/* Sticky Notes Container */
+.sticky-notes-container {
+    align-items: center;
+    text-align: center;
+    background-color: #f7fed8; /* Light gray for visibility */
+    position: absolute;
+    top: 0;
+    right: -25%; /* Initially off-screen */
+    width: 25%; /* Same as the sidebar width */
+    height: 100%;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 10px;
+    display: none; /* Hidden by default */
+    z-index: 10; /* Ensure it's above the content */
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px, rgba(0, 0, 0, 0.05) 0px 5px 10px;
+    transition: right 0.5s ease; /* Smooth transition for sliding */
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.sticky-notes-container hr {
+  width: 450px;
+  color: #2e2e2e;
+}
+  
+
+
+
+
+
+
+/* Dark mode styles */
+.dark-mode {
+    background-color: #2e2e2e; /* Darker grey similar to Discord */
+  }
+  
+  .sidebar.dark-mode button {
+    background-color: #2e2e2e;
+    color: white; /* Change button text to white */
+  }
+  
+  /* Dark mode logo */
+  .dark-logo {
+    content: url('uno2.png'); /* Change logo image to uno3.jpg */
+  }
+
+  .content.dark-mode {
+    background-color: #3a3a3a; /* Slightly lighter grey than body */
+    color: white;
+  }
+
+  .sticky-notes-container.dark-mode {
+    background-color: #484444;
+    color: white;
+  }
+
+
+
+.dark-mode .todo-item {
+  background-color: #535353;
+}
+
+.dark-mode .task-item {
+  background-color: #535353;
+}
+
+
+
+
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.299);
+  justify-content: center;
+  align-items: center;
+}
+.modal-content {
+  background-color: rgba(255, 255, 255, 0.505);
+  padding: 20px;
+  border-radius: 8px;
+  width: 500px;
+  height: 500px;
+}
+.plus-button {
+  font-size: 24px;
+  padding: 5px 10px;
+  border: none;
+  background-color: #6c63ff;
+  color: white;
+  cursor: pointer;
+  border-radius: 20px;
+  height: 50px;
+  width: 50px;
+  margin-top: 25px;
+}
+
+.plus-button:hover {
+  transform: translateY(-2px); /* Lift the icon slightly */
+  transition: transform 0.3s ease-in-out;
+}
+
+.lists-container, .projects-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-top: 50px;
+  height: 600px;
+}
+.list-card, .project-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #dadada;
+  padding: 15px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  height: 100px;
+  width: 100px;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 3px 0px;
+}
+.add-button, .cancel-button {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  margin-top: 10px;
+  border-radius: 5px;
+}
+.add-button {
+  background-color: #007bff;
+  color: white;
+}
+.cancel-button {
+  background-color: #dc3545;
+  color: white;
+}
+
+
+
+
+
+
+
+.funnygif {
+  height: 150px;
+  width: 250px;
+}
